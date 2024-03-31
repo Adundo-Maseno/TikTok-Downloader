@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <polygon points="80 40 160 100 40 160" fill="#6ee7b7" />
+
+  <circle cx="120" cy="100" r="15" fill="#e8e8e8" />
+  <circle cx="120" cy="100" r="8" fill="#4b5563" />
+  <line x1="105" y1="100" x2="135" y2="100" stroke="#4b5563" stroke-width="2" stroke-linecap="round" />
+  <line x1="120" y1="85" x2="120" y2="115" stroke="#4b5563" stroke-width="2" stroke-linecap="round" />
+
+  <text x="60" y="140" font-size="24" font-family="Poppins, sans-serif" fill="#ffffff">
+    TKDM
+  </text>
+</svg>

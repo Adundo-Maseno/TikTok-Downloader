@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TikTok Video Downloader</title>
+  <!-- Tailwind CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+  <style>
+    /* Custom styles */
+    body {
+      background-color: #f3f4f6; /* Light gray background */
+      font-family: "Google Sans Mono", "monospace", "Poppins", sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 2rem;
+      border-radius: 10px;
+      background-color: #ffffff; /* White background */
+      box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1); /* Box shadow */
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      color: #4b5563; /* Dark gray text color */
+      margin-bottom: 1.5rem;
+      text-align: center;
+    }
+
+    label {
+      font-size: 1.1rem;
+      color: #6b7280; /* Grayish text color */
+    }
+
+    input[type="text"],
+    input[type="number"] {
+      width: 100%;
+      padding: 1rem;
+      background-color: #edf2f7; /* Light gray background */
+      border: 1px solid #d1d5db; /* Light gray border */
+      border-radius: 10px;
+      margin-bottom: 1rem;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Transition for border color and box shadow */
+      padding-left: 2.5rem; /* Add left padding for icon */
+    }
+
+    input[type="text"]:focus,
+    input[type="number"]:focus {
+      outline: none;
+      border-color: #6ee7b7; /* Teal border color on focus */
+      box-shadow: 0px 0px 10px rgba(110, 231, 183, 0.5); /* Box shadow on focus */
+    }
+
+    button {
+      display: block;
+      width: 100%;
+      padding: 1rem;
+      background-color: #6ee7b7; /* Teal button background */
+      color: #ffffff; /* White text color */
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #48bb78; /* Darker teal on hover */
+    }
+
+    footer {
+      margin-top: 2rem;
+      text-align: center;
+      font-size: 0.9rem;
+      color: #6b7280; /* Grayish text color */
+    }
+
+    /* Font Awesome icon styles */
+    .fa-input {
+      position: absolute;
+      top: 50%;
+      left: 0.5rem; /* Adjust left position */
+      transform: translateY(-50%);
+      font-size: 1.5rem; /* Larger icon size */
+      color: #6b7280; /* Grayish text color */
+      z-index: 1; /* Ensure icons appear above input */
+    }
+
+    /* Header styles */
+    .header {
+      background-color: #6ee7b7; /* Teal background */
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1); /* Box shadow */
+      border-top-left-radius: 10px;
+      border-top-right-radius: 10px;
+    }
+
+    .logo {
+      font-size: 1.8rem;
+      color: #ffffff; /* White text color */
+      text-decoration: none;
+    }
+
+    .logo:hover {
+      opacity: 0.8; /* Reduce opacity on hover */
+    }
+
+    .nav-links {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+    }
+
+    .nav-links li {
+      margin-left: 1rem;
+    }
+
+    .nav-links li a {
+      color: #ffffff; /* White text color */
+      text-decoration: none;
+      transition: opacity 0.3s ease;
+    }
+
+    .nav-links li a:hover {
+      opacity: 0.8; /* Reduce opacity on hover */
+    }
+
+    /* Footer styles */
+    .footer {
+      background-color: #6ee7b7; /* Teal background */
+      padding: 2rem;
+      color: #ffffff; /* White text color */
+      text-align: center;
+      border-bottom-left-radius: 10px;
+      border-bottom-right-radius: 10px;
+    }
+
+    .footer a {
+      color: #ffffff; /* White text color */
+      text-decoration: none;
+      transition: opacity 0.3s ease;
+    }
+
+    .footer a:hover {
+      opacity: 0.8; /* Reduce opacity on hover */
+    }
+
+    /* TikTok logo */
+    .tiktok-logo {
+      width: 50px;
+      height: auto;
+    }
+
+    .video-info {
+      background-color: #edf2f7;
+      padding: 1rem;
+      border-radius: 10px;
+      margin-top: 1rem;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Box shadow */
+    }
+
+    .video-info p {
+      margin: 0.5rem 0;
+      color: #4b5563; /* Dark gray text color */
+      font-size: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <a href="/" class="logo">
+      <img src="/static/mov.svg" alt="Movitech-TKDM Logo" />
+    </a>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+  <div class="container mt-8">
+    <h1 class="mb-6">Download Trending TikTok Videos</h1>
+    <form action="/download" method="post">
+      <div class="mb-4 relative">
+        <i class="fas fa-search fa-input"></i>
+        <label for="search_term">Enter search term:</label>
+        <input
+          type="text"
+          id="search_term"
+          name="search_term"
+          placeholder="E.g., trending, #funny, #music"
+          required
+        />
+      </div>
+      <div class="mb-4 relative">
+        <i class="fas fa-list-ol fa-input"></i>
+        <label for="num_videos">Number of videos:</label>
+        <input
+          type="number"
+          id="num_videos"
+          name="num_videos"
+          min="1"
+          max="100"
+          value="10"
+          required
+        />
+      </div>
+      <button type="submit">Download Trending Videos</button>
+    </form>
+  </div>
+  <div class="container">
+    {% if video_data %}
+      {% for id, url, tag in video_data %}
+        <!-- Render each video with its ID, URL, and tag -->
+        <div class="video-info">
+          <p>ID: {{ id }}</p>
+          <p>Video URL: {{ url }}</p>
+          <p>Video Tag: {{ tag }}</p>
+        </div>
+      {% endfor %}
+    {% elif video_data is none %}
+      <!-- Display a message when video data is not available -->
+      <p>No video data available</p>
+    {% else %}
+      <!-- Display a message when video data is empty -->
+      <p>No video data available</p>
+    {% endif %}
+  </div>
+  
+  <footer class="footer mt-8">
+    Made with ❤️ by
+    <a href="https://github.com/yourusername" target="_blank">Moses Adundo</a>
+  </footer>
+  <!-- Font Awesome -->
+  <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+</body>
+</html>
