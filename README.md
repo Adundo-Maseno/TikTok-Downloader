@@ -32,7 +32,7 @@ TikTok Video Downloader is a web application that allows users to download trend
 5. Click on the download links to download the videos to your device.
 
 ## Contributors
-- [Your Name](https://github.com/Adundo-Maseno) - Lead Developer
+- [Moses Adundo](https://github.com/Adundo-Maseno) - Lead Developer
 
 ## License
 This project is licensed under the [MIT License](LICENSE).
